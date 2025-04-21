@@ -25,33 +25,27 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+### Step 1: Provision Azure Virtual Machines
 
-<h2>Deployment and Configuration Steps</h2>
+- Deploy two virtual machines:
+  - **1 Windows Server 2022 VM** for Active Directory Domain Services
+  - **1 Windows 10 VM** as a domain-joined client
+- Configure virtual network, subnet, and ensure both VMs are in the same network.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+### Step 2: Configure Windows Server and Install AD DS
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+- Assign a static private IP to the Server VM.
+- Rename the server and install the **Active Directory Domain Services** role.
+- Promote the server to a **Domain Controller** and create a new forest/domain.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+### Step 3: Set Up DNS and Join Client to Domain
+
+- Configure the Windows 10 VM to use the Server VM as its DNS server.
+- Join the Windows 10 VM to the newly created domain.
+- Restart and verify successful domain join.
+
+### Step 4: Verify and Test Domain Services
+
+- Log in to the Windows 10 VM using domain credentials.
+- Use tools like **Active Directory Users and Computers (ADUC)** to create and manage user accounts.
+- Optionally test **Group Policy**, **Remote Access**, and **PowerShell AD Commands**.
